@@ -38,3 +38,22 @@ plt.ylabel('X2')
 
 plt.tight_layout()
 plt.show()
+
+# Now creating a new figure for both iterations combined
+plt.figure(figsize=(6, 6))
+
+# Scatter plot showing both first and last iteration positions
+plt.scatter(positions_start[:, 0], positions_start[:, 1], c='blue', label='First Iteration', alpha=0.7)
+plt.scatter(positions_end[:, 0], positions_end[:, 1], c='red', label='Final Iteration', alpha=0.7)
+
+# Adding title and labels
+plt.title('Fish Positions - First and Final Iteration Combined')
+plt.xlabel('X1')
+plt.ylabel('X2')
+
+# Show legend
+plt.legend()
+
+# Display the plot
+plt.tight_layout()
+plt.show()

@@ -3,6 +3,9 @@
 import numpy as np
 from scipy import spatial
 
+import numpy as np
+from scipy import spatial
+
 class AFSA:
     def __init__(self, func, n_dim, size_pop=50, max_iter=300,
                  max_try_num=100, step=0.5, visual=0.3,
@@ -22,7 +25,7 @@ class AFSA:
 
         best_idx = self.Y.argmin()
         self.best_x, self.best_y = self.X[best_idx, :], self.Y[best_idx]
-        self.best_X, self.best_Y = self.best_x, self.best_y
+        self.best_X, self.best_Y = self.best_x, self.best_y  # will be deprecated, use lowercase
         self.history_positions = []
 
     def move_to_target(self, idx_individual, x_target):
@@ -67,7 +70,7 @@ class AFSA:
         for try_num in range(self.max_try_num):
             r = 2 * np.random.rand(self.n_dim) - 1
             x_target = self.X[idx_individual, :] + self.visual * r
-            if self.func(x_target) < self.Y[idx_individual]: 
+            if self.func(x_target) < self.Y[idx_individual]:  # 捕食成功
                 self.move_to_target(idx_individual, x_target)
                 return None
        
@@ -117,6 +120,7 @@ class AFSA:
                 self.swarm(idx_individual)
                 self.follow(idx_individual)
             self.visual *= self.q
+        # self.best_X, self.best_Y = self.best_x, self.best_y  # will be deprecated, use lowercase
         return self.best_x, self.best_y
 
 
