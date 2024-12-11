@@ -22,7 +22,7 @@ class AFSA:
 
         best_idx = self.Y.argmin()
         self.best_x, self.best_y = self.X[best_idx, :], self.Y[best_idx]
-        self.best_X, self.best_Y = self.best_x, self.best_y  # will be deprecated, use lowercase
+        self.best_X, self.best_Y = self.best_x, self.best_y
         self.history_positions = []
 
     def move_to_target(self, idx_individual, x_target):
@@ -67,7 +67,7 @@ class AFSA:
         for try_num in range(self.max_try_num):
             r = 2 * np.random.rand(self.n_dim) - 1
             x_target = self.X[idx_individual, :] + self.visual * r
-            if self.func(x_target) < self.Y[idx_individual]:  # 捕食成功
+            if self.func(x_target) < self.Y[idx_individual]: 
                 self.move_to_target(idx_individual, x_target)
                 return None
        
@@ -117,7 +117,6 @@ class AFSA:
                 self.swarm(idx_individual)
                 self.follow(idx_individual)
             self.visual *= self.q
-        # self.best_X, self.best_Y = self.best_x, self.best_y  # will be deprecated, use lowercase
         return self.best_x, self.best_y
 
 
